@@ -15,7 +15,7 @@ con.on('open', function(){
 app.use(express.json())
 
 const studentRouter = require('./routes/students')
-app.use('/contacts', studentRouter)
+app.use('/students', studentRouter)
 
 app.listen(port, function(){
     console.log('Server started!')
