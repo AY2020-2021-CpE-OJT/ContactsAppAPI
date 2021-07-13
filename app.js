@@ -5,7 +5,7 @@ let port = process.env.PORT || 9000;
 
 const app = express()
 
-mongoose.connect(url, {useNewUrlParser:true})
+mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
 const con = mongoose.connection
 
 con.on('open', function(){
