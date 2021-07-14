@@ -1,12 +1,20 @@
-const { response, request } = require('express')
 const express = require('express')
 const student = require('../models/student')
 const router = express.Router()
 const Student = require('../models/student')
 
-router.get('/', async(request, response) => {
+/*router.get('/', async(request, response) => {
     try{
             const students = await Student.find()
+            response.json(students)
+    }catch(err){
+        response.send('Error' + err)
+    }
+})*/
+
+router.get('/', async(request, response) => {
+    try{
+            const students = await Student.find(request.params.contacts)
             response.json(students)
     }catch(err){
         response.send('Error' + err)
