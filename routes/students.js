@@ -14,7 +14,7 @@ const Student = require('../models/student')
 
 router.get('/', async(request, response) => {
     try{
-            const students = await Student.find(request.contacts)
+            const students = await Student.find()
             response.json(students)
     }catch(err){
         response.send('Error' + err)
