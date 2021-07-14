@@ -12,7 +12,7 @@ const Student = require('../models/student')
     }
 })*/
 
-router.get('/', async(request, response) => { async
+router.get('/', async( request, response) => { 
     try{
             const students = await Student.find()
             response.json(students)
@@ -21,16 +21,16 @@ router.get('/', async(request, response) => { async
     }
 })
 
-router.get('/:id', async(request, response) => { async
+router.get('/:id', async(request, response) => { 
     try{
             const students = await Student.findById(request.params.id)
             response.json(students)
     }catch(err){
-        response.send('Error' + err)
+            response.send('Error' + err)
     }
 })
 
-router.post('/', async(request, response) => { async
+router.post('/', async(request, response) => { 
     const student = new Student({
         //id: request.body.id,
         first_name: request.body.first_name,
@@ -46,7 +46,7 @@ router.post('/', async(request, response) => { async
     }
 })
 
-router.patch('/:id', async(request, response) => { async
+router.patch('/:id', async(request, response) => { 
     try{
         const student = await Student.findById(request.params.id)
         student.phone_number = request.body.phone_number
@@ -57,7 +57,7 @@ router.patch('/:id', async(request, response) => { async
     }
 })
 
-router.delete('/:id', async(request, response) => { async
+router.delete('/:id', async(request, response) => { 
     try{
         const student = await Student.findById(request.params.id)
         student.phone_number = request.body.phone_number
