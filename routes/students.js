@@ -12,7 +12,7 @@ const Student = require('../models/student')
     }
 })*/
 
-router.get('/', async(request, response) => {
+router.get('/', async(request, response) => { async
     try{
             const students = await Student.find()
             response.json(students)
@@ -21,7 +21,7 @@ router.get('/', async(request, response) => {
     }
 })
 
-router.get('/:id', async(request, response) => {
+router.get('/:id', async(request, response) => { async
     try{
             const students = await Student.findById(request.params.id)
             response.json(students)
@@ -30,7 +30,7 @@ router.get('/:id', async(request, response) => {
     }
 })
 
-router.post('/', async(request, response) => {
+router.post('/', async(request, response) => { async
     const student = new Student({
         //id: request.body.id,
         first_name: request.body.first_name,
@@ -46,7 +46,7 @@ router.post('/', async(request, response) => {
     }
 })
 
-router.patch('/:id', async(request, response) => {
+router.patch('/:id', async(request, response) => { async
     try{
         const student = await Student.findById(request.params.id)
         student.phone_number = request.body.phone_number
@@ -57,7 +57,7 @@ router.patch('/:id', async(request, response) => {
     }
 })
 
-router.delete('/:id', async(request, response) => {
+router.delete('/:id', async(request, response) => { async
     try{
         const student = await Student.findById(request.params.id)
         student.phone_number = request.body.phone_number
