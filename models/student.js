@@ -26,7 +26,8 @@ const studentSchema = new mongoose.Schema({
     capped: { size: 1024 },
     bufferCommands: false,
     autoCreate: false // disable `autoCreate` since `bufferCommands` is false
-  });
+  },);
+  mongoose.set('bufferCommands', false);
 
   
   const Model = mongoose.model('Student', studentSchema);
