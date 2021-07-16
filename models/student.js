@@ -28,10 +28,14 @@ const studentSchema = new mongoose.Schema({
     autoCreate: false // disable `autoCreate` since `bufferCommands` is false
   },);
 
-  
-  //const Model = mongoose.model('Student', studentSchema);
-  // Explicitly create the collection before using it
-  // so the collection is capped.
-  //await Model.createCollection();
+    async function myfunction() {
+    const Student = mongoose.model('Student', studentSchema);
+    // Explicitly create the collection before using it
+    // so the collection is capped.
+    await Student.createCollection();
+   }
+   function start() {
+    return myfunction();
+  }
 
-module.exports = mongoose.model('Student', studentSchema)
+//module.exports = mongoose.model('Student', studentSchema)
