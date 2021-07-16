@@ -27,12 +27,11 @@ const studentSchema = new mongoose.Schema({
     bufferCommands: false,
     autoCreate: false // disable `autoCreate` since `bufferCommands` is false
   },);
-  mongoose.set('bufferCommands', false);
 
   
-  const Model = mongoose.model('Student', studentSchema);
+  //const Model = mongoose.model('Student', studentSchema);
   // Explicitly create the collection before using it
   // so the collection is capped.
-  Model.createCollection();
+  //await Model.createCollection();
 
 module.exports = mongoose.model('Student', studentSchema)
