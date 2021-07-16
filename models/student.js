@@ -38,4 +38,4 @@ const studentSchema = new mongoose.Schema({
     return myfunction();
   }
 
-module.exports = mongoose.model('Student', studentSchema)
+//module.exports = mongoose.model('Student', studentSchema)
