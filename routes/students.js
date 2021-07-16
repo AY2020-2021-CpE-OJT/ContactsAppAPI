@@ -1,7 +1,7 @@
 const express = require('express')
 const student = require('../models/student')
 const router = express.Router()
-const Student = require('../models/student')
+//const Student = require('../models/student')
 
 /*router.get('/', async(request, response) => {
     try{
@@ -14,7 +14,8 @@ const Student = require('../models/student')
 
 router.get('/', async( request, response) => { 
     try{
-            const students = await Student.find({
+            const students = await Student.find()
+            response.json({
 
                 /*id:{
                     type: Number,
@@ -35,7 +36,6 @@ router.get('/', async( request, response) => {
                 }
             
             })
-            response.json(students)
     }catch(err){
         response.send('Error' + err)
     }
