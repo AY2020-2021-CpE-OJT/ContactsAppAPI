@@ -1,7 +1,7 @@
 const express = require('express')
 const student = require('../models/student')
 const router = express.Router()
-//const Student = require('../models/student')
+const Student = require('../models/student')
 
 /*router.get('/', async(request, response) => {
     try{
@@ -15,27 +15,7 @@ const router = express.Router()
 router.get('/', async( request, response) => { 
     try{
             const students = await Student.find()
-            response.json({
-
-                /*id:{
-                    type: Number,
-                    //default: uuid.v4,
-                    required: true
-                },*/
-                first_name:{
-                    type: String,
-                    required: true
-                },
-                last_name:{
-                    type: String,
-                    required: true
-                },
-                phone_number:{
-                    type: String,
-                    required: true
-                }
-            
-            })
+            response.json(students)
     }catch(err){
         response.send('Error' + err)
     }
