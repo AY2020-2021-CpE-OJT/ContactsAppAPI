@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const url = process.env.URL || 'mongodb://localhost:27017/StudentDB'
-let port = process.env.PORT || 9000;
+let port = process.env.PORT || 3000;
 
 const app = express()
 

@@ -17,7 +17,7 @@ router.get('/', async( request, response) => {
             const students = await Student.find()
             response.json(students)
     }catch(err){
-        //response.send('Error' + err)
+        response.send('Error' + err)
     }
 })
 
