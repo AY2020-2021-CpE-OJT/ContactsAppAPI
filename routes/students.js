@@ -42,7 +42,7 @@ router.post('/', async(request, response) => {
         const a1 = await student.save()
         response.json(a1)
     }catch(err){
-        response.send('Error')
+        response.send('Error' + err)
     }
 })
 
