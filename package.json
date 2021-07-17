@@ -6,6 +6,9 @@
   "scripts": {
     "start": "nodemon app.js"
   },
+  "engines": {
+    "node": "14.17.1"
+  },
   "author": "Raymund De La Victoria",
   "license": "ISC",
   "dependencies": {
