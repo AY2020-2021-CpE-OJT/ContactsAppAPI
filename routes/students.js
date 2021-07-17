@@ -13,12 +13,12 @@ const Student = require('../models/student')
 })*/
 
 router.get('/', async( request, response) => { 
-    //try{
+    try{
             const students = await Student.find()
             response.json(students)
-    //}//catch(err){
+    }catch(err){
         //response.send('Error' + err)
-    //}
+    }
 })
 
 router.get('/:id', async(request, response) => { 
