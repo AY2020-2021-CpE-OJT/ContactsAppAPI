@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const url = process.env.URL || 'mongodb://localhost:27017/StudentDB?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false'
+const db = require('./db')
+//const url = process.env.URL || 'mongodb://localhost:27017/StudentDB'
 let port = process.env.PORT || 3000;
 
 const app = express()
@@ -9,12 +10,12 @@ const app = express()
 //raymxndo
 //myMongoDB*password2021
 
-mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
+/*mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
 const con = mongoose.connection
 
 con.on('open', function(){
     console.log('Connected!')
-})
+})*/
 
 app.use(express.json())
 
