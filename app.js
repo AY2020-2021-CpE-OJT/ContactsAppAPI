@@ -6,10 +6,6 @@ let port = process.env.PORT || 3000;
 
 const app = express()
 
-//mongodb+srv://raymxndo:<password>@cluster0.th1ts.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-//raymxndo
-//myMongoDB*password2021
-
 /*mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
 const con = mongoose.connection
 
@@ -25,3 +21,8 @@ app.use('/contacts', studentRouter)
 app.listen(port, function(){
     console.log('Server started!')
 }) 
+
+
+//link to read
+//https://wirescript.vercel.app/blog/how-to-setup-mongodb-with-node-js-and-express
+//https://stackoverflow.com/questions/65680842/error-mongooseerror-operation-users-insertone-buffering-timed-out-after-1
