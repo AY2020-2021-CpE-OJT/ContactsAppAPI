@@ -53,7 +53,7 @@ router.post('/', verifyToken, async(request, response) => {
         last_name: request.body.last_name,
         phone_number: request.body.phone_number
     })
-    jwt.verify(request.token, 'secretkey', (err, authData) => {
+    jwt.verify(request.token, 'secretkey', async (err, authData) => {
         if (err) {
             response.sendStatus(403)
         } else {
