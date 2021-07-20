@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const db = require('./db')
 //const url = process.env.URL || 'mongodb+srv://raymxndo:myMongoDB*password2021@cluster0.th1ts.mongodb.net/ContactsDatabase?retryWrites=true&w=majority'
-let port = process.env.PORT || 3000;
+//let port = process.env.PORT || 3000;
 require("dotenv").config();
 
 const app = express()
@@ -20,8 +20,8 @@ app.use(express.json())
 const studentRouter = require('./routes/students')
 app.use('/contacts', studentRouter)
 
-app.listen(port, function(){
-    console.log('Server started!')
+app.listen(process.env.PORT, function(){
+    console.log("Server started!", this.address().port, app.settings.env)
 }) 
 
 
