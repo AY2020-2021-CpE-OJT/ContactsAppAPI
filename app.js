@@ -1,17 +1,19 @@
+require("dotenv").config();
 const express = require('express')
 const mongoose = require('mongoose')
 const db = require('./db')
-//const url = process.env.URL || 'mongodb://localhost:27017/StudentDB'
+//const url = process.env.URL || 'mongodb+srv://raymxndo:myMongoDB*password2021@cluster0.th1ts.mongodb.net/ContactsDatabase?retryWrites=true&w=majority'
 let port = process.env.PORT || 3000;
+require("dotenv").config();
 
 const app = express()
 
-/*mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGO_PROD_URI, {useNewUrlParser:true, useUnifiedTopology: true, useCreateIndex: true})
 const con = mongoose.connection
 
 con.on('open', function(){
     console.log('Connected!')
-})*/
+})
 
 app.use(express.json())
 
