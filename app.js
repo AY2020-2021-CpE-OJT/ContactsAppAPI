@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const db = require('./db')
 //const url = process.env.URL || 'mongodb+srv://raymxndo:myMongoDB*password2021@cluster0.th1ts.mongodb.net/ContactsDatabase?retryWrites=true&w=majority'
 //let port = process.env.PORT || 3000;
-require("dotenv").config();
+//require("dotenv").config();
 
 const app = express()
 
