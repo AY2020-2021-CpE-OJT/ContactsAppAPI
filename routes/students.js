@@ -86,7 +86,7 @@ router.patch('/:id', verifyToken, async(request, response) => {
     })
 })
 
-router.delete('/:id', async(request, response) => { 
+router.delete('/:id', verifyToken, async(request, response) => { 
 
     jwt.verify(request.token, 'secretkey', async (err, authData) => {
         if (err) {
