@@ -59,7 +59,7 @@ router.post('/', verifyToken, async(request, response) => {
         } else {
             try{
                 const a1 = await student.save()
-                response.json(a1, authData)
+                response.json(a1, {authData})
             }catch(err){
                 response.send('Error' + err)
             }
