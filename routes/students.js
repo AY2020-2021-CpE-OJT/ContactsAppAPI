@@ -67,17 +67,23 @@ router.post('/', verifyToken, async(request, response) => {
     })
 })
 
-router.patch('/:id', async(request, response) => { 
-    try{
-        const student = await Student.findById(request.params.id)
-        student.phone_number = request.body.phone_number
-        student.first_name = request.body.first_name
-        student.last_name = request.body.last_name
-        const a1 = await student.save()
-        response.json(a1)
-    }catch(err){
-        response.send('Error')
-    }
+router.patch('/:id', verifyToken, async(request, response) => { 
+    jwt.verify(request.token, 'secretkey', async (err, authData) => {
+        if (err) {
+            response.sendStatus(403)
+        } else {    
+            try{
+            const student = await Student.findById(request.params.id)
+            student.phone_number = request.body.phone_number
+            student.first_name = request.body.first_name
+            student.last_name = request.body.last_name
+            const a1 = await student.save()
+            response.json(a1)
+            }catch(err){
+                response.send('Error')
+            }
+        }
+    })
 })
 
 router.delete('/:id', async(request, response) => { 
