@@ -1,4 +1,6 @@
+const { response } = require('express')
 const express = require('express')
+const jwt = require ('jsonwebtoken')
 const student = require('../models/student')
 const router = express.Router()
 const Student = require('../models/student')
@@ -28,6 +30,20 @@ router.get('/:id', async(request, response) => {
     }catch(err){
             response.send('Error' + err)
     }
+})
+
+router.post('/login', (request, response) => {
+    // Mock user
+    const user = {
+        id: 1,
+        username: 'raymund',
+        email: 'raymunddlv@gmail.com'
+    }
+    jwt.sign({user}, 'secretkey', (err, token) => {
+        response.json({
+            token
+        })
+    });
 })
 
 router.post('/', async(request, response) => { 
