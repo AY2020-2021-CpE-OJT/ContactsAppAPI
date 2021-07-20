@@ -46,7 +46,7 @@ router.post('/login', (request, response) => {
     });
 })
 
-router.post('/', async(request, response) => { 
+router.post('/', verifyToken, async(request, response) => { 
     const student = new Student({
         //id: request.body.id,
         first_name: request.body.first_name,
@@ -85,5 +85,21 @@ router.delete('/:id', async(request, response) => {
         response.send('Error')
     }
 })
+
+// Format of Token
+// Authorization: Bearer <access_token>
+
+//Verify Token
+function verifyToken (request, response, next) {
+    //Get auth header value
+    const bearerHeader = request.headers['authorization']
+    //Check if bearer is undefined
+    if(typeof bearerHeader !== 'undefined') {
+
+    } else {
+        //Forbidden
+        response.sendStatus(403);
+    }
+}
 
 module.exports = router
