@@ -28,7 +28,7 @@ router.post('/kwakobitoken', (request, response) => {
     });
 })
 
-router.get('/', async( request, response) => { 
+router.get('/', verifyToken, async( request, response) => { 
     jwt.verify(request.token, 'secretkey', async (err, authData) => {
         if (err) {
             response.sendStatus(403)
@@ -43,7 +43,7 @@ router.get('/', async( request, response) => {
     })
 })
 
-router.get('/:id', async(request, response) => { 
+router.get('/:id', verifyToken, async(request, response) => { 
     jwt.verify(request.token, 'secretkey', async (err, authData) => {
         if (err) {
             response.sendStatus(403)
