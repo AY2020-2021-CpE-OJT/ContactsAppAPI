@@ -71,6 +71,8 @@ router.patch('/:id', async(request, response) => {
     try{
         const student = await Student.findById(request.params.id)
         student.phone_number = request.body.phone_number
+        student.first_name = request.body.first_name
+        student.last_name = request.body.last_name
         const a1 = await student.save()
         response.json(a1)
     }catch(err){
