@@ -14,24 +14,6 @@ const Student = require('../models/student')
     }
 })*/
 
-router.get('/', async( request, response) => { 
-    try{
-            const students = await Student.find()
-            response.json(students)
-    }catch(err){
-        response.send('Error' + err)
-    }
-})
-
-router.get('/:id', async(request, response) => { 
-    try{
-            const students = await Student.findById(request.params.id)
-            response.json(students)
-    }catch(err){
-            response.send('Error' + err)
-    }
-})
-
 router.post('/kwakobitoken', (request, response) => {
     // Mock user
     const user = {
@@ -44,6 +26,36 @@ router.post('/kwakobitoken', (request, response) => {
             token
         })
     });
+})
+
+router.get('/', async( request, response) => { 
+    jwt.verify(request.token, 'secretkey', async (err, authData) => {
+        if (err) {
+            response.sendStatus(403)
+        } else {
+            try{
+                const students = await Student.find()
+                response.json(students)
+            }catch(err){
+            response.send('Error' + err)
+            }
+        }
+    })
+})
+
+router.get('/:id', async(request, response) => { 
+    jwt.verify(request.token, 'secretkey', async (err, authData) => {
+        if (err) {
+            response.sendStatus(403)
+        } else {
+            try{
+                const students = await Student.findById(request.params.id)
+                response.json(students)
+            }catch(err){
+                response.send('Error' + err)
+            }
+        }
+    })
 })
 
 router.post('/', verifyToken, async(request, response) => { 
