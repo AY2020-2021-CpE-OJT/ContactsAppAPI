@@ -53,13 +53,18 @@ router.post('/', verifyToken, async(request, response) => {
         last_name: request.body.last_name,
         phone_number: request.body.phone_number
     })
-
-    try{
-        const a1 = await student.save()
-        response.json(a1)
-    }catch(err){
-        response.send('Error' + err)
-    }
+    jwt.verify(request.token, 'secretkey', (err, authData) => {
+        if (err) {
+            response.sendStatus(403)
+        } else {
+            try{
+                const a1 = await student.save()
+                response.json(a1, authData)
+            }catch(err){
+                response.send('Error' + err)
+            }
+        }
+    })
 })
 
 router.patch('/:id', async(request, response) => { 
@@ -95,7 +100,13 @@ function verifyToken (request, response, next) {
     const bearerHeader = request.headers['authorization']
     //Check if bearer is undefined
     if(typeof bearerHeader !== 'undefined') {
-
+        //Split at the space
+        const bearer = bearerHeader.split(' ');
+        //Get token from array
+        const bearerToken = bearer[1]
+        //Set the token
+        request.token = bearerToken;
+        next()
     } else {
         //Forbidden
         response.sendStatus(403);
