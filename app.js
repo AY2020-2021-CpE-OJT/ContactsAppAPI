@@ -20,7 +20,7 @@ app.use(express.json())
 const studentRouter = require('./routes/students')
 app.use('/contacts', studentRouter)
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.PORT, function(){
     console.log("Server started!", this.address().port, app.settings.env)
 }) 
 
