@@ -32,7 +32,7 @@ router.get('/:id', async(request, response) => {
     }
 })
 
-router.post('/login', (request, response) => {
+router.post('/kwakobitoken', (request, response) => {
     // Mock user
     const user = {
         id: 1,
@@ -59,8 +59,7 @@ router.post('/', verifyToken, async(request, response) => {
         } else {
             try{
                 const a1 = await student.save()
-                //response.json(a1),
-                response.json({authData}, a1)
+                response.json(a1)
             }catch(err){
                 response.send('Error' + err)
             }
