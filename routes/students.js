@@ -65,18 +65,18 @@ router.post('/', async(request, response) => {
         last_name: request.body.last_name,
         phone_number: request.body.phone_number
     })
-   // jwt.verify(request.token, 'secretkey', async (err, authData) => {
-        //if (err) {
-          //  response.sendStatus(403)
-        //} else {
+    jwt.verify(request.token, 'secretkey', async (err, authData) => {
+        if (err) {
+            response.sendStatus(403)
+        } else {
             try{
                 const a1 = await student.save()
                 response.json(a1)
             }catch(err){
                 response.send('Error' + err)
             }
-        //}
-    //})
+        }
+    })
 })
 
 router.patch('/:id', verifyToken, async(request, response) => { 
