@@ -58,25 +58,25 @@ router.get('/:id', verifyToken, async(request, response) => {
     })
 })
 
-router.post('/', verifyToken, async(request, response) => { 
+router.post('/', async(request, response) => { 
     const student = new Student({
         //id: request.body.id,
         first_name: request.body.first_name,
         last_name: request.body.last_name,
         phone_number: request.body.phone_number
     })
-    jwt.verify(request.token, 'secretkey', async (err, authData) => {
-        if (err) {
-            response.sendStatus(403)
-        } else {
+   // jwt.verify(request.token, 'secretkey', async (err, authData) => {
+        //if (err) {
+          //  response.sendStatus(403)
+        //} else {
             try{
                 const a1 = await student.save()
                 response.json(a1)
             }catch(err){
                 response.send('Error' + err)
             }
-        }
-    })
+        //}
+    //})
 })
 
 router.patch('/:id', verifyToken, async(request, response) => { 
