@@ -58,7 +58,7 @@ router.get('/:id', verifyToken, async(request, response) => {
     })
 })
 
-router.post('/', async(request, response) => { 
+router.post('/', verifyToken, async(request, response) => { 
     const student = new Student({
         //id: request.body.id,
         first_name: request.body.first_name,
